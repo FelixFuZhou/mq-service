@@ -56,6 +56,12 @@
 			<artifactId>spring-boot-starter-logging</artifactId>
 		</dependency>
 
+		<!--通过 spring-rabbit 支持 AMQP-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp </artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
