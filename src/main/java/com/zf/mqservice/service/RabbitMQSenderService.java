@@ -1,5 +1,6 @@
 package com.zf.mqservice.service;
 
+import com.zf.mqservice.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -21,10 +22,13 @@ public class RabbitMQSenderService {
     private AmqpTemplate amqpTemplate;
 
     public void send(){
-        String sendmsg = "hello "+new Date();
-        LOGGER.info("send test :"+sendmsg);
 
-        this.amqpTemplate.convertAndSend("hello",sendmsg);
+        User user = new User();
+        user.setLoginName("18550516525");
+        user.setName("zhou");
+        LOGGER.info("send test :"+ user.getLoginName());
+
+        this.amqpTemplate.convertAndSend("hello",user);
 
 
     }
@@ -34,5 +38,24 @@ public class RabbitMQSenderService {
         this.amqpTemplate.convertAndSend("hello",msg);
 
 
+    }
+
+    public void sendTopic(){
+        String topicMsg = "I am topic msg ";
+        LOGGER.info("send topic msg :"+topicMsg);
+        this.amqpTemplate.convertAndSend("exchange","topic.message",topicMsg);
+    }
+
+    public void sendTopicS(){
+        String topicMsgs = "I am topic msg s";
+        LOGGER.info("send topic msgs :"+topicMsgs);
+
+        this.amqpTemplate.convertAndSend("exchange","topic.messages",topicMsgs);
+    }
+
+    public void sendFant(){
+        String FantMsg = "i am Fant msg";
+        LOGGER.info("send fant msg :"+FantMsg);
+        this.amqpTemplate.convertAndSend("fanoutExchange","1111",FantMsg);
     }
 }
