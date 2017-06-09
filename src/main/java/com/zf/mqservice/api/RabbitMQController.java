@@ -41,7 +41,7 @@ public class RabbitMQController {
     @RequestMapping(value = "sendTopic",method = RequestMethod.GET)
     public void sendTopicMsgs(){
         rabbitMQSenderService.sendTopic();
-        rabbitMQSenderService.sendTopicS();
+//        rabbitMQSenderService.sendTopicS();
     }
 
     @RequestMapping(value = "sendFant",method = RequestMethod.GET)

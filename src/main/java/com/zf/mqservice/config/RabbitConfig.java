@@ -44,12 +44,12 @@ public class RabbitConfig {
         connectionFactory.setPublisherConfirms(publisherConfirms);
         return connectionFactory;
     }
-//
-//    @Bean
-//    /** 因为要设置回调类，所以应是prototype类型，如果是singleton类型，则回调类为最后一次设置 */
-//    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-//    public RabbitTemplate rabbitTemplatenew() {
-//        RabbitTemplate template = new RabbitTemplate(connectionFactory());
-//        return template;
-//    }
+
+    @Bean
+    /** 因为要设置回调类，所以应是prototype类型，如果是singleton类型，则回调类为最后一次设置 */
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public RabbitTemplate rabbitTemplatenew() {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory());
+        return template;
+    }
 }

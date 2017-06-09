@@ -41,7 +41,7 @@ public class RabbitMQSenderService {
     }
 
     public void sendTopic(){
-        String topicMsg = "I am topic msg ";
+        String topicMsg = "I am topic msg 222 ";
         LOGGER.info("send topic msg :"+topicMsg);
         this.amqpTemplate.convertAndSend("exchange","topic.message",topicMsg);
     }
